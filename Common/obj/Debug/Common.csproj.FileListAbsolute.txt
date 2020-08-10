@@ -1,0 +1,9 @@
+C:\Users\pwei\Desktop\Fund\Common\bin\Debug\Common.dll
+C:\Users\pwei\Desktop\Fund\Common\bin\Debug\Common.pdb
+C:\Users\pwei\Desktop\Fund\Common\bin\Debug\SqlSugar.dll
+C:\Users\pwei\Desktop\Fund\Common\bin\Debug\Newtonsoft.Json.dll
+C:\Users\pwei\Desktop\Fund\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+C:\Users\pwei\Desktop\Fund\Common\obj\Debug\Common.csproj.CopyComplete
+C:\Users\pwei\Desktop\Fund\Common\obj\Debug\Common.dll
+C:\Users\pwei\Desktop\Fund\Common\obj\Debug\Common.pdb
+C:\Users\pwei\Desktop\Fund\Common\obj\Debug\Common.csprojAssemblyReference.cache

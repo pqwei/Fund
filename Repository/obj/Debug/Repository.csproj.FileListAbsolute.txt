@@ -1,0 +1,13 @@
+C:\Users\pwei\Desktop\Fund\Repository\bin\Debug\Repository.dll
+C:\Users\pwei\Desktop\Fund\Repository\bin\Debug\Repository.pdb
+C:\Users\pwei\Desktop\Fund\Repository\bin\Debug\Common.dll
+C:\Users\pwei\Desktop\Fund\Repository\bin\Debug\DB.Entitys.dll
+C:\Users\pwei\Desktop\Fund\Repository\bin\Debug\SqlSugar.dll
+C:\Users\pwei\Desktop\Fund\Repository\bin\Debug\Newtonsoft.Json.dll
+C:\Users\pwei\Desktop\Fund\Repository\bin\Debug\Common.pdb
+C:\Users\pwei\Desktop\Fund\Repository\bin\Debug\DB.Entitys.pdb
+C:\Users\pwei\Desktop\Fund\Repository\obj\Debug\Repository.csprojAssemblyReference.cache
+C:\Users\pwei\Desktop\Fund\Repository\obj\Debug\Repository.csproj.CoreCompileInputs.cache
+C:\Users\pwei\Desktop\Fund\Repository\obj\Debug\Repository.csproj.CopyComplete
+C:\Users\pwei\Desktop\Fund\Repository\obj\Debug\Repository.dll
+C:\Users\pwei\Desktop\Fund\Repository\obj\Debug\Repository.pdb

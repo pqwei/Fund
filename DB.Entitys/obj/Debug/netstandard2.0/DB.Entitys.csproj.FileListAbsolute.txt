@@ -1,0 +1,11 @@
+C:\Users\pwei\Desktop\Fund\DB.Entitys\bin\Debug\netstandard2.0\DB.Entitys.deps.json
+C:\Users\pwei\Desktop\Fund\DB.Entitys\bin\Debug\netstandard2.0\DB.Entitys.dll
+C:\Users\pwei\Desktop\Fund\DB.Entitys\bin\Debug\netstandard2.0\DB.Entitys.pdb
+C:\Users\pwei\Desktop\Fund\DB.Entitys\obj\Debug\netstandard2.0\DB.Entitys.AssemblyInfoInputs.cache
+C:\Users\pwei\Desktop\Fund\DB.Entitys\obj\Debug\netstandard2.0\DB.Entitys.AssemblyInfo.cs
+C:\Users\pwei\Desktop\Fund\DB.Entitys\obj\Debug\netstandard2.0\DB.Entitys.csproj.CoreCompileInputs.cache
+C:\Users\pwei\Desktop\Fund\DB.Entitys\obj\Debug\netstandard2.0\DB.Entitys.dll
+C:\Users\pwei\Desktop\Fund\DB.Entitys\obj\Debug\netstandard2.0\DB.Entitys.pdb
+C:\Users\pwei\Desktop\Fund\DB.Entitys\obj\Debug\netstandard2.0\DB.Entitys.csprojAssemblyReference.cache
+C:\Users\pwei\Desktop\Fund\DB.Entitys\bin\Debug\netstandard2.0\SqlSugar.dll
+C:\Users\pwei\Desktop\Fund\DB.Entitys\obj\Debug\netstandard2.0\DB.Entitys.csproj.CopyComplete
