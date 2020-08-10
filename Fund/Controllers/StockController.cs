@@ -16,14 +16,21 @@ namespace Fund.Controllers
         // GET: Analyst
         public ActionResult Index()
         {
-            var list = stockService.GetStock();
-            return View(list);
+            return View();
         }
 
         public ActionResult AddStock()
         {
             stockService.AddStock();
             return View();
+        }
+
+        public JsonResult GetStock()
+        {
+            return this.TryCatch(() =>
+            {
+                return stockService.GetStock().Where(o => o.Id > 1).ToList();
+            });
         }
 
 

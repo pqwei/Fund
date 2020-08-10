@@ -1,0 +1,173 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Element.cshtml";
+}
+
+<section id="main-content" style="margin:20px;">
+    <div class="panel panel-default">
+        <div class="panel-heading" style="background-color:#f1f5f7;color:#676d73">
+
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="row">
+                        <label>选择证券：</label>
+                        <select class="selectpicker form-control" data-live-search="true" name="Stock" id="Stock">
+                        </select>
+                    </div>
+                </div>
+
+                <div class='col-sm-3'>
+                    <div class="form-group">
+                        <label>选择开始时间：</label>
+                        <!--指定 date标记-->
+                        <div class='input-group date' id='datetimepickerStart'>
+                            <input type='text' class="form-control" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class='col-sm-3'>
+                    <div class="form-group">
+                        <label>选择结束时间：</label>
+                        <!--指定 date标记-->
+                        <div class='input-group date' id='datetimepickerEnd'>
+                            <input type='text' class="form-control" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <button id="Calculation" class="btn btn-info btn-sm">计算</button>
+
+            <div style="width:1200px;margin:auto;">
+                <div id="PolylineChart" style="width: 1200px;height:500px;margin:auto;float:left;"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@*EChart*@
+<script src="~/Scripts/chart/echarts.min.js"></script>
+
+<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<script src="~/Content/moment-with-locales.min.js"></script>
+<link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="static/js/moment-with-locales.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+<script>
+    $(function () {
+        $('#datetimepickerStart').datetimepicker({
+            format: 'YYYY-MM-DD',
+            locale: moment.locale('zh-cn'),
+            //setStartDate: '2012-01-01'
+        });
+        $('#datetimepickerEnd').datetimepicker({
+            format: 'YYYY-MM-DD',
+            locale: moment.locale('zh-cn'),
+            //startDate: 2019-05-30
+        });
+
+        $.ajax({
+            // get请求地址
+            url: "../Stock/GetStock",
+            dataType: "json",
+            success: function (data) {
+                var array = data.value;
+                for (var i = 0; i < array.length; i++) {
+                    $('.selectpicker').append("<option value=" + array[i].Id + ">" + array[i].Name + "</option>");
+                }
+
+
+                // 缺一不可
+                $('#Stock').selectpicker('refresh');
+                $('#Stock').selectpicker('render');
+            }
+        });
+
+        $.get("../Stock/GetCumulativeChange?stockId=3&startDate=2019-03-01&endDate=2019-05-31", function (data) {
+            drawEchart(data);
+        });
+
+        //计算
+        $("#Calculation").click(function () {
+            $.get("../Stock/GetCumulativeChange?stockId=3&startDate=2019-03-01&endDate=2019-10-31", function (data) {
+                drawEchart(data);
+            });
+        });
+    });
+
+    function drawEchart(echartData) {
+        var data = echartData.value.data;
+        var x = data.map(o => o.x)
+        //渲染EChart
+
+        var chart = echarts.init(document.getElementById('PolylineChart'));
+        var option = {
+            backgroundColor: '#FBFBFB',
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data: ['上证指数相对收益']
+            },
+
+            calculable: true,
+
+
+            xAxis: [
+                {
+                    axisLabel: {
+                        interval: 4,
+                        rotate: -20
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: '#142e48'
+                        }
+                    },
+                    type: 'category',
+                    boundaryGap: false,
+                    data: data.map(o => o.x)
+                }
+            ],
+            yAxis: [
+                {
+
+                    type: 'value',
+                    axisLine: {
+                        lineStyle: {
+                            color: '#142e48'
+                        }
+                    },
+                    min: 'dataMin' // 最小值
+                }
+            ],
+            series: [
+                {
+                    name: '上证指数相对收益',
+                    type: 'line',
+                    symbol: 'none',
+                    smooth: 0.2,
+                    color: ['#142e48'],
+                    data: data.map(o => o.y)
+                }
+            ]
+        };
+        chart.setOption(option);
+
+        window.onresize = chart.resize;
+
+    }
+
+</script>
+
