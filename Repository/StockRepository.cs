@@ -20,20 +20,13 @@ namespace Repository
 
         public List<Stock> GetStock()
         {
-            _db.CodeFirst.InitTables(typeof(Stock));
             return _db.Queryable<Stock>().ToList();
         }
 
-        public void AddStock()
+        public void AddStock(Stock stock)
         {
-            //_db.CodeFirst.InitTables(typeof(Stock));
-            _db.Insertable(new Stock
-            {
-                Id = 1,
-                Name = "贵州茅台",
-                CreateTime=DateTime.Now
-            })
-            .ExecuteCommand();
+            _db.CodeFirst.InitTables(typeof(Stock));
+            _db.Insertable(stock).ExecuteCommand();
         }
     }
 }

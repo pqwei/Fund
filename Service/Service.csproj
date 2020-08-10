@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="StockPriceService.cs" />
     <Compile Include="StockService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -52,6 +53,10 @@
     <ProjectReference Include="..\DB.Entitys\DB.Entitys.csproj">
       <Project>{7c6ae60d-5015-4e90-8ecc-0e1cdd349d1d}</Project>
       <Name>DB.Entitys</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTO.Models\DTO.Models.csproj">
+      <Project>{282d035b-7904-498c-8aba-b2a1d9f59998}</Project>
+      <Name>DTO.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\Repository\Repository.csproj">
       <Project>{b59dd4f9-2290-47c8-a992-a72f700c8ae0}</Project>
