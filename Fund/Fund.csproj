@@ -125,32 +125,21 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\ElementUI\element-ui.css" />
     <Content Include="Content\moment-with-locales.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Config\AppSettings.config" />
-    <Content Include="Content\ElementUI\fonts\element-icons.ttf" />
-    <Content Include="Content\ElementUI\fonts\element-icons.woff" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
-    <Content Include="Scripts\chart\echarts-wordcloud.js" />
-    <Content Include="Scripts\chart\echarts-wordcloud.min.js" />
     <Content Include="Scripts\chart\echarts.min.js" />
-    <Content Include="Scripts\chart\highcharts.js" />
-    <Content Include="Scripts\chart\svg3dtagcloud.min.js" />
-    <Content Include="Scripts\chart\wordcloud.js" />
-    <Content Include="Scripts\ElementUI\element-ui.js" />
-    <Content Include="Scripts\jquery-3.3.1\jquery-3.3.1.js" />
-    <Content Include="Scripts\jquery-3.3.1\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -161,11 +150,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Scripts\pages\css\Movie.css" />
-    <Content Include="Scripts\pages\src\DouBanMovie.js" />
-    <Content Include="Scripts\pages\src\Movie.js" />
-    <Content Include="Scripts\vue\vue.js" />
-    <Content Include="Scripts\vue\vue.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -180,7 +164,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\Element.cshtml" />
     <Content Include="Views\Stock\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>

@@ -10,7 +10,6 @@ C:\Users\pwei\Desktop\Fund\Common\obj\Debug\Common.csprojAssemblyReference.cache
 E:\Fund\Common\bin\Debug\Common.dll
 E:\Fund\Common\bin\Debug\Common.pdb
 E:\Fund\Common\bin\Debug\BouncyCastle.Crypto.dll
-E:\Fund\Common\bin\Debug\ExcelDataReader.dll
 E:\Fund\Common\bin\Debug\ICSharpCode.SharpZipLib.dll
 E:\Fund\Common\bin\Debug\NPOI.dll
 E:\Fund\Common\bin\Debug\NPOI.OOXML.dll
@@ -20,8 +19,6 @@ E:\Fund\Common\bin\Debug\SqlSugar.dll
 E:\Fund\Common\bin\Debug\System.Web.Mvc.dll
 E:\Fund\Common\bin\Debug\Newtonsoft.Json.dll
 E:\Fund\Common\bin\Debug\BouncyCastle.Crypto.xml
-E:\Fund\Common\bin\Debug\ExcelDataReader.pdb
-E:\Fund\Common\bin\Debug\ExcelDataReader.xml
 E:\Fund\Common\bin\Debug\ICSharpCode.SharpZipLib.pdb
 E:\Fund\Common\bin\Debug\ICSharpCode.SharpZipLib.xml
 E:\Fund\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache

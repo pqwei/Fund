@@ -1,7 +1,7 @@
 ﻿
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/Element.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <section id="main-content" style="margin:20px;">
@@ -54,13 +54,12 @@
 </section>
 
 @*EChart*@
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+
 <script src="~/Scripts/chart/echarts.min.js"></script>
-
-<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
-
-<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
-<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
 <script src="~/Content/moment-with-locales.min.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 <script>
@@ -90,20 +89,16 @@
             }
         });
 
-        var id = $('#Stock option:selected').val;
-        var startDate = $('#datetimepickerStart option:selected').val;
-        var endDate = $('#datetimepickerEnd option:selected').val;
-
-        $.get("../Stock/GetCumulativeChange?stockId=" + id + "&startDate=" + startDate + "&endDate=" + endDate + "", function (data) {
-            drawEchart(data);
-        });
-
-        //计算
-        $("#Calculation").click(function () {
-            $.get("../Stock/GetCumulativeChange?stockId=3&startDate=2019-03-01&endDate=2019-10-31", function (data) {
+        function getData() {
+            var id = $('#Stock option:selected').val() || 2;
+            var startDate = $('#datetimepickerStart .form-control').val();
+            var endDate = $('#datetimepickerEnd .form-control').val();
+            $.get("../Stock/GetCumulativeChange?stockId=" + id + "&startDate=" + startDate + "&endDate=" + endDate + "", function (data) {
                 drawEchart(data);
             });
-        });
+        }
+        getData();
+        $("#Calculation").click(getData);
     });
 
     function drawEchart(echartData) {
