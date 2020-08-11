@@ -1,6 +1,4 @@
 ﻿using Common;
-using Common.Base;
-using Common.Services;
 using DB.Entitys;
 using DTO.Models;
 using Repository;
@@ -19,6 +17,11 @@ namespace Service
         public List<Stock> GetStock()
         {
             return stockRepository.GetStock();
+        }
+
+        public Stock GetStockById(int id)
+        {
+            return stockRepository.GetStockById(id);
         }
 
         public void AddStock()

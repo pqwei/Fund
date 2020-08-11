@@ -53,7 +53,9 @@ namespace Fund.Controllers
         {
             return this.TryCatch(() =>
             {
-                AssertUtils.Is(stockId > 0, "证券不存在!");
+                AssertUtils.Is(stockId > 0, "证券Id不可为空!");
+                var stock = stockService.GetStockById(stockId);
+                AssertUtils.Is(stock != null, "证券不存在!");
                 var result = stockService.GetDailyChange(stockId);
                 return new DataPoint
                 {
@@ -75,16 +77,27 @@ namespace Fund.Controllers
         {
             return this.TryCatch(() =>
             {
-                AssertUtils.Is(stockId > 0, "证券不存在!");
+                AssertUtils.Is(stockId > 0, "证券Id不可为空!");
+                var stock = stockService.GetStockById(stockId);
+                AssertUtils.Is(stock != null, "证券不存在!");
                 var result = stockService.GetCumulativeChange(stockId, startDate, endDate);
-                return new DataPoint
+                ChartSeries chart = new ChartSeries
                 {
-                    data = result.Select(o => new XYPair<object, object>
-                    {
-                        x = o.Date.ToShortDateTimeStr(),
-                        y = o.Change
-                    }).ToList()
+                    title = $"相对收益"
                 };
+                chart.line_series.Add(new LineSeries
+                {
+                    name = $"{stock.Name}-上证指数相对收益",
+                    data = new DataPoint
+                    {
+                        data = result.Select(o => new XYPair<object, object>
+                        {
+                            x = o.Date.ToShortDateTimeStr(),
+                            y = o.Change
+                        }).ToList()
+                    }
+                });
+                return chart;
             });
         }
 

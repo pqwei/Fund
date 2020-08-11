@@ -1,5 +1,4 @@
 ﻿using Common.Base;
-using Common.Repository;
 using DB.Entitys;
 using SqlSugar;
 using System;
@@ -27,6 +26,11 @@ namespace Repository
         {
             _db.CodeFirst.InitTables(typeof(Stock));
             _db.Insertable(stock).ExecuteCommand();
+        }
+
+        public Stock GetStockById(int id)
+        {
+            return _db.Queryable<Stock>().First(o => o.Id == id);
         }
     }
 }

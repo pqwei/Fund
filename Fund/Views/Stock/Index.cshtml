@@ -47,7 +47,7 @@
             <button id="Calculation" class="btn btn-info btn-sm">计算</button>
 
             <div style="width:1200px;margin:auto;">
-                <div id="PolylineChart" style="width: 1200px;height:500px;margin:auto;float:left;"></div>
+                <div id="PolylineChart" style="width: 1200px;height:500px;margin:auto;float:left;top:20px;"></div>
             </div>
         </div>
     </div>
@@ -57,24 +57,25 @@
 <script src="~/Scripts/chart/echarts.min.js"></script>
 
 <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-<script src="~/Content/moment-with-locales.min.js"></script>
 <link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="static/js/moment-with-locales.js"></script>
+<script src="~/Content/moment-with-locales.min.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 <script>
     $(function () {
         $('#datetimepickerStart').datetimepicker({
             format: 'YYYY-MM-DD',
             locale: moment.locale('zh-cn'),
-            //setStartDate: '2012-01-01'
+            defaultDate: "2019-01-02",
+            minDate: '2019-01-02'
         });
         $('#datetimepickerEnd').datetimepicker({
             format: 'YYYY-MM-DD',
             locale: moment.locale('zh-cn'),
-            //startDate: 2019-05-30
+            defaultDate: "2019-12-31",
+            maxDate: '2019-12-31'
         });
 
         $.ajax({
@@ -86,15 +87,14 @@
                 for (var i = 0; i < array.length; i++) {
                     $('.selectpicker').append("<option value=" + array[i].Id + ">" + array[i].Name + "</option>");
                 }
-
-
-                // 缺一不可
-                $('#Stock').selectpicker('refresh');
-                $('#Stock').selectpicker('render');
             }
         });
 
-        $.get("../Stock/GetCumulativeChange?stockId=3&startDate=2019-03-01&endDate=2019-05-31", function (data) {
+        var id = $('#Stock option:selected').val;
+        var startDate = $('#datetimepickerStart option:selected').val;
+        var endDate = $('#datetimepickerEnd option:selected').val;
+
+        $.get("../Stock/GetCumulativeChange?stockId=" + id + "&startDate=" + startDate + "&endDate=" + endDate + "", function (data) {
             drawEchart(data);
         });
 
@@ -107,27 +107,42 @@
     });
 
     function drawEchart(echartData) {
-        var data = echartData.value.data;
-        var x = data.map(o => o.x)
-        //渲染EChart
+        var chart = echartData.value;
+        var data = chart.line_series[0].data.data;
 
+        var title = chart.title;
+        var name = chart.line_series[0].name;
+
+        //渲染EChart
         var chart = echarts.init(document.getElementById('PolylineChart'));
         var option = {
             backgroundColor: '#FBFBFB',
+            title: {
+                show: true,//显示策略，默认值true,可选为：true（显示） | false（隐藏）
+                text: title,//主标题文本，'\n'指定换行
+                x: 'center',//水平安放位置，默认为'left'，可选为：'center' | 'left' | 'right' | {number}（x坐标，单位px）
+                y: 'bottom',//垂直安放位置，默认为top，可选为：'top' | 'bottom' | 'center' | {number}（y坐标，单位px）
+                padding: 5,
+                textStyle: {//主标题文本样式{"fontSize": 18,"fontWeight": "bolder","color": "#333"}
+                    fontFamily: 'Arial, Verdana, sans...',
+                    fontSize: 12,
+                    fontStyle: 'normal',
+                    fontWeight: 'normal',
+                }
+            },
             tooltip: {
                 trigger: 'axis'
             },
             legend: {
-                data: ['上证指数相对收益']
+                data: [name]
             },
 
             calculable: true,
 
-
             xAxis: [
                 {
                     axisLabel: {
-                        interval: 4,
+                        interval: parseInt(data.length / 12),
                         rotate: -20
                     },
                     axisLine: {
@@ -154,7 +169,7 @@
             ],
             series: [
                 {
-                    name: '上证指数相对收益',
+                    name: name,
                     type: 'line',
                     symbol: 'none',
                     smooth: 0.2,
