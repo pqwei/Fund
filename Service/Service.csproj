@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Service</RootNamespace>
     <AssemblyName>Service</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -51,7 +52,7 @@
       <Name>Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\DB.Entitys\DB.Entitys.csproj">
-      <Project>{7c6ae60d-5015-4e90-8ecc-0e1cdd349d1d}</Project>
+      <Project>{72a686d8-340f-46a5-947a-dd266057d5b5}</Project>
       <Name>DB.Entitys</Name>
     </ProjectReference>
     <ProjectReference Include="..\DTO.Models\DTO.Models.csproj">

@@ -1,0 +1,6 @@
+E:\Fund\DTO.Models\bin\Release\DTO.Models.dll
+E:\Fund\DTO.Models\bin\Release\DTO.Models.pdb
+E:\Fund\DTO.Models\obj\Release\DTO.Models.csprojAssemblyReference.cache
+E:\Fund\DTO.Models\obj\Release\DTO.Models.csproj.CoreCompileInputs.cache
+E:\Fund\DTO.Models\obj\Release\DTO.Models.dll
+E:\Fund\DTO.Models\obj\Release\DTO.Models.pdb

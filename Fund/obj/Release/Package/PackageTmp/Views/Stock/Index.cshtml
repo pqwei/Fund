@@ -1,0 +1,188 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Element.cshtml";
+}
+
+<section id="main-content" style="margin:20px;">
+    <div class="panel panel-default">
+        <div class="panel-heading" style="background-color:#f1f5f7;color:#676d73">
+
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="row">
+                        <label>选择证券：</label>
+                        <select class="selectpicker form-control" data-live-search="true" name="Stock" id="Stock">
+                        </select>
+                    </div>
+                </div>
+
+                <div class='col-sm-3'>
+                    <div class="form-group">
+                        <label>选择开始时间：</label>
+                        <!--指定 date标记-->
+                        <div class='input-group date' id='datetimepickerStart'>
+                            <input type='text' class="form-control" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class='col-sm-3'>
+                    <div class="form-group">
+                        <label>选择结束时间：</label>
+                        <!--指定 date标记-->
+                        <div class='input-group date' id='datetimepickerEnd'>
+                            <input type='text' class="form-control" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <button id="Calculation" class="btn btn-info btn-sm">计算</button>
+
+            <div style="width:1200px;margin:auto;">
+                <div id="PolylineChart" style="width: 1200px;height:500px;margin:auto;float:left;top:20px;"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@*EChart*@
+<script src="~/Scripts/chart/echarts.min.js"></script>
+
+<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="~/Content/moment-with-locales.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+<script>
+    $(function () {
+        $('#datetimepickerStart').datetimepicker({
+            format: 'YYYY-MM-DD',
+            locale: moment.locale('zh-cn'),
+            defaultDate: "2019-01-02",
+            minDate: '2019-01-02'
+        });
+        $('#datetimepickerEnd').datetimepicker({
+            format: 'YYYY-MM-DD',
+            locale: moment.locale('zh-cn'),
+            defaultDate: "2019-12-31",
+            maxDate: '2019-12-31'
+        });
+
+        $.ajax({
+            // get请求地址
+            url: "../Stock/GetStock",
+            dataType: "json",
+            success: function (data) {
+                var array = data.value;
+                for (var i = 0; i < array.length; i++) {
+                    $('.selectpicker').append("<option value=" + array[i].Id + ">" + array[i].Name + "</option>");
+                }
+            }
+        });
+
+        var id = $('#Stock option:selected').val;
+        var startDate = $('#datetimepickerStart option:selected').val;
+        var endDate = $('#datetimepickerEnd option:selected').val;
+
+        $.get("../Stock/GetCumulativeChange?stockId=" + id + "&startDate=" + startDate + "&endDate=" + endDate + "", function (data) {
+            drawEchart(data);
+        });
+
+        //计算
+        $("#Calculation").click(function () {
+            $.get("../Stock/GetCumulativeChange?stockId=3&startDate=2019-03-01&endDate=2019-10-31", function (data) {
+                drawEchart(data);
+            });
+        });
+    });
+
+    function drawEchart(echartData) {
+        var chart = echartData.value;
+        var data = chart.line_series[0].data.data;
+
+        var title = chart.title;
+        var name = chart.line_series[0].name;
+
+        //渲染EChart
+        var chart = echarts.init(document.getElementById('PolylineChart'));
+        var option = {
+            backgroundColor: '#FBFBFB',
+            title: {
+                show: true,//显示策略，默认值true,可选为：true（显示） | false（隐藏）
+                text: title,//主标题文本，'\n'指定换行
+                x: 'center',//水平安放位置，默认为'left'，可选为：'center' | 'left' | 'right' | {number}（x坐标，单位px）
+                y: 'bottom',//垂直安放位置，默认为top，可选为：'top' | 'bottom' | 'center' | {number}（y坐标，单位px）
+                padding: 5,
+                textStyle: {//主标题文本样式{"fontSize": 18,"fontWeight": "bolder","color": "#333"}
+                    fontFamily: 'Arial, Verdana, sans...',
+                    fontSize: 12,
+                    fontStyle: 'normal',
+                    fontWeight: 'normal',
+                }
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data: [name]
+            },
+
+            calculable: true,
+
+            xAxis: [
+                {
+                    axisLabel: {
+                        interval: parseInt(data.length / 12),
+                        rotate: -20
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: '#142e48'
+                        }
+                    },
+                    type: 'category',
+                    boundaryGap: false,
+                    data: data.map(o => o.x)
+                }
+            ],
+            yAxis: [
+                {
+
+                    type: 'value',
+                    axisLine: {
+                        lineStyle: {
+                            color: '#142e48'
+                        }
+                    },
+                    min: 'dataMin' // 最小值
+                }
+            ],
+            series: [
+                {
+                    name: name,
+                    type: 'line',
+                    symbol: 'none',
+                    smooth: 0.2,
+                    color: ['#142e48'],
+                    data: data.map(o => o.y)
+                }
+            ]
+        };
+        chart.setOption(option);
+
+        window.onresize = chart.resize;
+
+    }
+
+</script>
+

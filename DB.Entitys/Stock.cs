@@ -1,4 +1,5 @@
-﻿using SqlSugar;
+﻿using Common.Base;
+using SqlSugar;
 using System;
 
 namespace DB.Entitys

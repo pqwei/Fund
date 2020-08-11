@@ -1,3 +1,5 @@
+E:\Fund\Fund\obj\Debug\Fund.csprojAssemblyReference.cache
+E:\Fund\Fund\obj\Debug\Fund.csproj.CoreCompileInputs.cache
 E:\Fund\Fund\bin\Fund.dll.config
 E:\Fund\Fund\bin\Fund.dll
 E:\Fund\Fund\bin\Fund.pdb
@@ -99,8 +101,6 @@ E:\Fund\Fund\bin\zh-Hans\System.Web.Razor.resources.dll
 E:\Fund\Fund\bin\zh-Hans\System.Web.WebPages.resources.dll
 E:\Fund\Fund\bin\zh-Hans\System.Web.WebPages.Deployment.resources.dll
 E:\Fund\Fund\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
-E:\Fund\Fund\obj\Debug\Fund.csprojAssemblyReference.cache
-E:\Fund\Fund\obj\Debug\Fund.csproj.CoreCompileInputs.cache
 E:\Fund\Fund\obj\Debug\Fund.csproj.CopyComplete
 E:\Fund\Fund\obj\Debug\Fund.dll
 E:\Fund\Fund\obj\Debug\Fund.pdb

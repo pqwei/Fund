@@ -3,3 +3,4 @@ E:\Fund\DTO.Models\bin\Debug\DTO.Models.pdb
 E:\Fund\DTO.Models\obj\Debug\DTO.Models.csproj.CoreCompileInputs.cache
 E:\Fund\DTO.Models\obj\Debug\DTO.Models.dll
 E:\Fund\DTO.Models\obj\Debug\DTO.Models.pdb
+E:\Fund\DTO.Models\obj\Debug\DTO.Models.csprojAssemblyReference.cache

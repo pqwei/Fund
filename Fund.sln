@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fund", "Fund\Fund.csproj", "{059AF05F-7B5A-4851-863D-83D741A771EC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DB.Entitys", "DB.Entitys\DB.Entitys.csproj", "{7C6AE60D-5015-4E90-8ECC-0E1CDD349D1D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{8DC573BC-6243-402A-9F47-A2DAA3AB1B7F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{5BD2DCEB-6E7F-4054-B953-453F377C98A8}"
@@ -14,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{B59DD4F9-2290-47C8-A992-A72F700C8AE0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTO.Models", "DTO.Models\DTO.Models.csproj", "{282D035B-7904-498C-8ABA-B2A1D9F59998}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DB.Entitys", "DB.Entitys\DB.Entitys.csproj", "{72A686D8-340F-46A5-947A-DD266057D5B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,10 +25,6 @@ Global
 		{059AF05F-7B5A-4851-863D-83D741A771EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{059AF05F-7B5A-4851-863D-83D741A771EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{059AF05F-7B5A-4851-863D-83D741A771EC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7C6AE60D-5015-4E90-8ECC-0E1CDD349D1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7C6AE60D-5015-4E90-8ECC-0E1CDD349D1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7C6AE60D-5015-4E90-8ECC-0E1CDD349D1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7C6AE60D-5015-4E90-8ECC-0E1CDD349D1D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8DC573BC-6243-402A-9F47-A2DAA3AB1B7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8DC573BC-6243-402A-9F47-A2DAA3AB1B7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DC573BC-6243-402A-9F47-A2DAA3AB1B7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,6 +41,10 @@ Global
 		{282D035B-7904-498C-8ABA-B2A1D9F59998}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{282D035B-7904-498C-8ABA-B2A1D9F59998}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{282D035B-7904-498C-8ABA-B2A1D9F59998}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72A686D8-340F-46A5-947A-DD266057D5B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72A686D8-340F-46A5-947A-DD266057D5B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72A686D8-340F-46A5-947A-DD266057D5B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72A686D8-340F-46A5-947A-DD266057D5B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

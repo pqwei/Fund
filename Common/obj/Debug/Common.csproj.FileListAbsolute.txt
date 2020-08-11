@@ -24,7 +24,6 @@ E:\Fund\Common\bin\Debug\ExcelDataReader.pdb
 E:\Fund\Common\bin\Debug\ExcelDataReader.xml
 E:\Fund\Common\bin\Debug\ICSharpCode.SharpZipLib.pdb
 E:\Fund\Common\bin\Debug\ICSharpCode.SharpZipLib.xml
-E:\Fund\Common\obj\Debug\Common.csprojAssemblyReference.cache
 E:\Fund\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
 E:\Fund\Common\obj\Debug\Common.csproj.CopyComplete
 E:\Fund\Common\obj\Debug\Common.dll
